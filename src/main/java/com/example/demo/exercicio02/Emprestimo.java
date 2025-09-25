@@ -4,11 +4,12 @@ import java.time.LocalDateTime;
 
 public class Emprestimo {
     private UUID emprestimoId;
+    private Livro livro;
     private UUID livroId;
     private String usuarioId;
     private LocalDateTime dataEmprestimo;
 
-    public Emprestimo(UUID livroId, String usuarioId) {
+    public Emprestimo(Livro livro, String usuarioId) {
         this.emprestimoId = UUID.randomUUID();
         this.livroId = livroId;
         this.usuarioId = usuarioId;
@@ -27,5 +28,8 @@ public class Emprestimo {
     }
     public LocalDateTime getDataEmprestimo() {
         return dataEmprestimo;
+    }
+    public Livro getLivro() {
+        return livro;
     }
 }
