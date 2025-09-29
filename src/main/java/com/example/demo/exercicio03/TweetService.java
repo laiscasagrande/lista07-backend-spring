@@ -13,23 +13,51 @@ public class TweetService {
         usuarios.add(new Usuario("Jaqueline", "jaqueline@gmail.com"));
         usuarios.add(new Usuario("Beatriz", "beatriz750@gmail.com"));
         usuarios.add(new Usuario("Lucas", "lucas750@gmail.com"));
-
-      //  tweets.add(new Tweet("Bom dia", true));
-      //  tweets.add(new Tweet("Bom dia", true));
     }
 
     public List<Usuario> getUsuarios() {
         return usuarios;
     }
 
-    public List<Tweet> getTweets(UUID usuarioId) {
+    public List<Tweet> getTweetsById(UUID usuarioId) {
         if (usuarioId == usuarios.get(0).getId()) {
             return tweets;
         }
         return null;
     }
 
-    public void setTweets(List<Tweet> tweets) {
-        this.tweets = tweets;
+    public Tweet setTweets(Tweet tweet, UUID id) {
+        for (Usuario usuario : usuarios) {
+            if (usuario.getId().equals(id)) {
+                Tweet novoTweet = new Tweet(tweet.getMensagem(), false);
+                usuario.getTweets().add(novoTweet);
+                return novoTweet;
+            }
+        }
+        throw new RuntimeException("Usuário não encontrado");
+    }
+
+    public Tweet atualizaMensagem(Tweet tweet, UUID id, UUID tweetId) {
+        for (Usuario usuario : usuarios) {
+            if (usuario.getId().equals(id)) {
+                for (Tweet novoTweet : usuario.getTweets()) {
+                    if (novoTweet.getTweetId().equals(tweetId)) {
+                        novoTweet.setMensagem(tweet.getMensagem());
+                        novoTweet.setEditado(true);
+                        return novoTweet;
+                    }
+                }
+                throw new RuntimeException("Tweet não encontrado");
+            }
+        }
+        throw new RuntimeException("Usuário não encontrado");
+    }
+
+    public void removerTweet(UUID id, UUID tweetId) {
+        for (Usuario usuario : usuarios) {
+            if (usuario.getId().equals(id)) {
+                usuario.getTweets().removeIf(novoTweet -> novoTweet.getTweetId().equals(tweetId));
+            }
+        }
     }
 }

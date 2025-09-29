@@ -1,11 +1,13 @@
 package com.example.demo.exercicio03;
 
+import java.util.List;
 import java.util.UUID;
 
 public class Usuario {
    private UUID id;
    private String nome;
    private String email;
+   private List<Tweet> tweets;
 
     Usuario(String nome, String email) {
         this.id = UUID.randomUUID();
@@ -33,6 +35,10 @@ public class Usuario {
     public String setEmail(String email) {
         this.email = email;
         return email;
+    }
+
+    public List<Tweet> getTweets() {
+        return tweets;
     }
 }
 
