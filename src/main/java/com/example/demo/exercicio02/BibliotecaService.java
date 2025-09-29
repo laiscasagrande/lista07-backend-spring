@@ -1,9 +1,12 @@
 package com.example.demo.exercicio02;
 
+import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+@Service
 public class BibliotecaService {
     private final List<Livro> livrosDisponiveis = new ArrayList<>(); //o final torna a referência da variável imutável, depois de inicializada, não pode ser alterada
     private final List<Emprestimo> emprestimos = new ArrayList<>();

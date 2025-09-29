@@ -7,8 +7,14 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
+@RequestMapping("/")
 public class TweetController {
     private TweetService tweetService;
+
+    @GetMapping
+    public String home() {
+        return "API online.";
+    }
 
     public TweetController(TweetService tweetService) {
         this.tweetService = tweetService;

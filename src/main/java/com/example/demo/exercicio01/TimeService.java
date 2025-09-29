@@ -1,8 +1,11 @@
 package com.example.demo.exercicio01;
 
+import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class TimeService {
     private final List<Jogador> jogadores = new ArrayList<>(); //cria uma lista de jogadores através da classe Jogador
 

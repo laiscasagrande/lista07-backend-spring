@@ -14,6 +14,11 @@ import java.util.UUID;
 public class BibliotecaController {
     private final BibliotecaService bibliotecaService;
 
+    @GetMapping
+    public String home() {
+        return "API online.";
+    }
+
     public BibliotecaController(BibliotecaService bibliotecaService) {
         this.bibliotecaService = bibliotecaService;
     }

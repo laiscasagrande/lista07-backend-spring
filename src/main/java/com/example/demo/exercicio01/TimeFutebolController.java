@@ -14,6 +14,11 @@ public class TimeFutebolController {
 
     private final TimeService timeService; // serviço que contém a lógica do time
 
+    @GetMapping
+    public String home() {
+        return "API online.";
+    }
+
     // Injeção de dependência via construtor
     public TimeFutebolController(TimeService timeService) {
         this.timeService = timeService;
